@@ -1,0 +1,69 @@
+
+
+isPrime:
+
+Specification
+	in + Y(x)
+	(x)
+	out + Y(x,z)
+	(z)
+	
+Input: n
+	Y(x): n is Natural
+
+Output: r
+	Y(x,z): r in {T|F} ^ ((r=T ^ n prime) v (r=F ^ n not prime) v errorMsg)
+
+EC=> TC_EC		| TC_EC_BVA
+BVA=> TC_BVA	|
+
+SEE EXCEL SHEET IN FOLDER
+
+AAA pattern(in testing)
+
+arrange -> obj ...
+
+act -> call function to be tested
+
+assert -> actualR ?=? expectedR
+
+Test Cases examples:
+
+public class AppTest{
+
+	private VerifyIsPrime objVP;
+	
+	@BeforeEach
+	public void setup(){
+		objVP=new VerifyIsPrime(); // A1
+	}
+	
+	@Test
+	public void test_TC_5_EC(){
+		try{
+			boolean actualR=objVP.isPrime(1);  //A2
+			boolean expectedR=false;		   //A2
+			assertTrue(actualR==expectedR);	   //A3
+		}catch(...){
+			...
+		}
+	}
+	
+	@ParameterizedTest
+	@CsvSource({"5,true","14,false",...})
+	public void test_PrimeNr(int number,boolean expected){
+		try{
+			boolean actualR=objVP.isPrime(number);
+			assertTrue(actualR==expected);
+		}catch(...){
+			...
+		}
+	}
+	
+	@After
+	public void tearDown(){
+		objVP=null;
+	}
+}
+
+
